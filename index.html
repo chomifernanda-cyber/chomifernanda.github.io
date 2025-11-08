@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Alojamiento Web | Rediseño Lila Completo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables y Reset Básico */
+        :root {
+            --lila-claro: #F8F0FF; /* Fondo suave, casi blanco */
+            --lila-medio: #C9B8D9; /* Acentos claros */
+            --lila-fuerte: #9370DB; /* Morado/Violeta para botones y títulos */
+            --texto-principal: #333;
+            --sombra-suave: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* Degradado de Fondo Principal */
+            background: linear-gradient(180deg, var(--lila-claro) 0%, #FFFFFF 100%);
+            color: var(--texto-principal);
+            line-height: 1.6;
+            padding-top: 70px; /* Espacio para el header fijo */
+        }
+
+        /* ------------------------ Encabezado ------------------------ */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--lila-fuerte);
+        }
+
+        .cta-header {
+            background: linear-gradient(45deg, var(--lila-fuerte), #BA55D3);
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(147, 112, 219, 0.4);
+        }
+
+        /* ------------------------ Contenedor Principal ------------------------ */
+        .container {
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-align: center;
+            color: var(--lila-fuerte);
+            margin: 40px 0 30px;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: var(--lila-fuerte);
+            margin-bottom: 10px;
+        }
+
+        /* ------------------------ Sección Hero (Principal) ------------------------ */
+        .hero {
+            padding: 80px 5% 50px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: -webkit-linear-gradient(45deg, var(--lila-fuerte), #E0BBE4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p.intro {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: #555;
+        }
+
+        /* ------------------------ Acordeón Interactivo ------------------------ */
+        .accordion-item {
+            border: 1px solid var(--lila-medio);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .accordion-header {
+            background-color: var(--lila-medio);
+            color: white;
+            padding: 15px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--lila-fuerte);
+        }
+
+        .accordion-content {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            color: #555;
+        }
+        
+        .accordion-content p {
+            padding: 15px 0;
+        }
+
+        .accordion-header span {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active span {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content.active {
+            max-height: 1000px; /* Suficientemente grande para el contenido largo */
+            padding: 15px 25px;
+        }
+        
+        /* ------------------------ Grid de Ventajas ------------------------ */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .benefit-card {
+            background-color: var(--lila-claro);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--sombra-suave);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--lila-fuerte);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-3px);
+            background-color: #EDE7F6;
+        }
+        
+        /* ------------------------ Footer ------------------------ */
+        footer {
+            background-color: var(--lila-fuerte);
+            color: white;
+            text-align: center;
+            padding: 20px 5%;
+            margin-top: 60px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">☁️ AWS Alojamiento</div>
+      <a href="#aws-services" class="cta-header">¡Explora los Servicios AWS!</a>
+    </header>
+
+    <section class="hero">
+        <h1>Redefine tu Presencia en Línea con AWS</h1>
+        <p class="intro">Toda la información esencial sobre Alojamiento Web en un diseño interactivo, moderno y elegante.</p>
+        <a href="#que-es" class="cta-header" style="background: var(--lila-fuerte);">Comienza Aquí</a>
+    </section>
+
+    <div class="container">
+        
+        <h2 id="que-es">❓ Conceptos Fundamentales e Interacción</h2>
+        
+        <div class="accordion-item">
+            <div class="accordion-header active">
+                ¿En qué consiste el alojamiento web? (Clic para ver la definición completa)
+                <span>+</span>
+            </div>
+            <div class="accordion-content active">
+                <p>El **alojamiento web** es un servicio que almacena sitios web o aplicaciones web (formados por imágenes, vídeos, texto y código) y los hace fácilmente accesibles desde diversos dispositivos (computadoras de escritorio, móviles, tabletas). El proveedor **mantiene, configura y ejecuta los servidores físicos** que usted alquila, ofreciendo apoyo adicional como seguridad, copias de seguridad y rendimiento.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                ¿Cómo funciona el alojamiento web? (Analogía interactiva)
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Al crear una cuenta, se le asigna un **espacio y recursos** (RAM, CPU, ancho de banda) en el servidor. Esto es similar a **alquilar un espacio de oficina**:</p>
+                <ul>
+                    <li>**Opción menos costosa:** Espacio de coworking (Alojamiento Gratuito/Compartido).</li>
+                    <li>**Opción de expansión:** Oficina completa o edificio entero (VPS o Servidor Dedicado).</li>
+                </ul>
+                <p>Usted administra este espacio desde el panel de su cuenta, decidiendo el porcentaje de recursos que utiliza.</p>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Diferencia clave: Alojamiento web vs. Nombre de Dominio
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p>El **Alojamiento web** proporciona el **servidor o la máquina** en Internet (la ubicación física). Un **Nombre de Dominio** proporciona la **dirección** (ej. *aws.amazon.com*). Los registros de dominio usan un **Sistema de Nombres de Dominio (DNS)** para asignar nombres fáciles de recordar a las direcciones IP únicas de los servidores, haciendo que su sitio sea localizable.</p>
+            </div>
+        </div>
+
+
+        <hr>
+
+        <h2>🌟 Ventajas Esenciales de Usar un Proveedor de Alojamiento</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3>Rendimiento</h3>
+                <p>El proveedor invierte en **tecnología de vanguardia** para ofrecer servidores de alto rendimiento que cargan páginas rápidamente.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Fiabilidad</h3>
+                <p>Evita el estrés del mantenimiento: el proveedor realiza **actualizaciones periódicas** del sistema para un alto nivel de seguridad.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Soporte Técnico</h3>
+                <p>Asistencia completa, optimización, **supervisión y análisis** del sitio, copia de seguridad y recuperación de datos.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Seguridad y Cumplimiento</h3>
+                <p>Un **enfoque integral** con medidas físicas, operativas y de software que satisfacen los requisitos de cumplimiento.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>🔍 Características Detalladas del Alojamiento Web</h2>
+        <p style="text-align: center; margin-bottom: 20px; color: #666;">El costo y el plan dependen del **tamaño, tráfico y características** requeridas.</p>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Espacio en Disco (Almacenamiento para archivos)
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p>El sitio necesita espacio de almacenamiento para correos electrónicos, archivos web, imágenes y bases de datos. Es vital considerar el crecimiento futuro, ya que un espacio reducido impacta negativamente la experiencia del usuario.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Ancho de Banda y Transferencia de Datos (Analogía de la Tubería)
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p>El **Ancho de Banda** es la **cantidad máxima** de datos que puede transferir el sitio a la vez (el *tamaño de la tubería*). La **Transferencia de Datos** es la **cantidad real** de datos que pasa por la tubería en un periodo determinado. Es crucial para manejar el tráfico de visitantes.</p>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Cuentas de Correo Electrónico (POP3, Reenvío, Alias)
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Permite vincular una dirección de correo profesional (ej. *nombre@dominio.com*). Tipos principales:</p>
+                <ul>
+                    <li>**POP3:** Almacena correos en el servidor, accesibles mediante cliente.</li>
+                    <li>**Reenvío de Correo:** Redirige correos a otra dirección (personal o de terceros).</li>
+                    <li>**Alias:** Crea nombres de cuenta (ej. *ventas@*) que redirigen a una sola bandeja de entrada principal.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Acceso FTP (Transferencia de Archivos)
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Se refiere a la **transferencia e intercambio de archivos** (documentos, PDF, imágenes) entre su computadora y el servidor web, permitiendo a los internautas descargar contenido.</p>
+            </div>
+        </div>
+        
+        <hr>
+
+        <h2 id="tipos-alojamiento">🛠️ Tipos de Alojamiento Web (Según tu Escala)</h2>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Alojamiento Compartido (Ideal para empezar)
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p><strong>Descripción:</strong> Acceso compartido al servidor con cientos de otros sitios. Se comparten recursos (CPU, RAM). <strong>Ventajas:</strong> Tarifas bajas, fácil configuración. <strong>Limitaciones:</strong> Menos control, el rendimiento puede afectarse por picos de tráfico de otros sitios.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Alojamiento en Servidor Privado Virtual (VPS) (Para crecimiento)
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p><strong>Descripción:</strong> El servidor físico se particiona en pequeños servidores virtuales. Acceso exclusivo a espacio y recursos dedicados. <strong>Ventajas:</strong> Control total de la configuración, fácil escalado. <strong>Limitaciones:</strong> Requiere cierta experticia técnica (a menos que elijas un servicio administrado).</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Alojamiento Dedicado (Para grandes empresas)
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p><strong>Descripción:</strong> Acceso exclusivo a todo el servidor físico solo para su sitio web. <strong>Ventajas:</strong> Máxima fiabilidad, seguridad y personalización completa. <strong>Limitaciones:</strong> Alto costo y requiere capacidades técnicas internas para el mantenimiento.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header active" style="background: linear-gradient(90deg, var(--lila-fuerte), #FFB6C1);">
+                Alojamiento en la Nube (Cloud Hosting) (El futuro)
+                <span>+</span>
+            </div>
+            <div class="accordion-content active">
+                <p><strong>Descripción:</strong> Acceso a un **clúster de servidores** (la nube). Los archivos se replican en varios servidores. Si uno está ocupado, el tráfico se dirige automáticamente a otro. <strong>Ventajas:</strong> Mayor disponibilidad, escalado horizontal/vertical automático, seguridad y alta flexibilidad (se paga solo por lo que se usa).</p>
+            </div>
+        </div>
+        
+        <hr>
+
+        <h2 id="aws-services">✨ Requisitos Modernos y Servicios de AWS</h2>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Requisitos del Alojamiento Web Moderno
+                <span>+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Las aplicaciones modernas deben:</p>
+                <ul>
+                    <li>Ofrecer la **menor latencia** posible globalmente.</li>
+                    <li>**Escalar** para picos de tráfico y cargas intensas.</li>
+                    <li>Funcionar en **cientos de navegadores y dispositivos** diferentes.</li>
+                    <li>Aumentar la **agilidad** y reducir el **Costo Total de Propiedad (TCO)**.</li>
+                    <li>**Evitar la administración** de servidores físicos.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin-top: 40px; color: var(--lila-fuerte);">Soluciones Específicas de Alojamiento Web de AWS:</h3>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3>Amazon Lightsail (VPS Semi-Administrado)</h3>
+                <p>La forma **más sencilla** para PYMES. Ofrece VPS, contenedores y bases de datos con esquemas preconfigurados (WordPress, Joomla) en pocos clics. Ideal para crecimiento sencillo.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>AWS Amplify Hosting (Sin Servidor)</h3>
+                <p>Para aplicaciones web de una sola página y sitios estáticos. Alojamiento **totalmente escalable y de pago por uso** activado por canalizaciones Git de CI/CD.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Amazon EC2 (Control Total)</h3>
+                <p>Ofrece capacidad de computación de tamaño ajustable. Permite **administrar completamente** los servidores. Complejo, pero da el **mayor grado de control**.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Amazon S3 (Sitios Estáticos)</h3>
+                <p>Opción de **bajo costo** para alojar sitios web simples y estáticos que no cambian con frecuencia. Económico y sencillo de configurar.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <p style="font-size: 1.1em; margin-bottom: 20px;">AWS se adapta a todos los niveles de habilidad, presupuestos y necesidades de escalabilidad.</p>
+            <a href="#" class="cta-header" style="padding: 15px 40px; font-size: 1.2em;">
+                Regístrese para Obtener Acceso Gratuito a AWS
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2025 Rediseño Lila AWS Alojamiento Web.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headers = document.querySelectorAll('.accordion-header');
+
+            headers.forEach(header => {
+                // Función para alternar el contenido
+                const toggleAccordion = () => {
+                    const content = header.nextElementSibling;
+                    const isActive = header.classList.contains('active');
+
+                    // Implementación para mantener solo uno abierto a la vez (opcional)
+                    // document.querySelectorAll('.accordion-header').forEach(h => {
+                    //     if (h !== header && h.classList.contains('active')) {
+                    //         h.classList.remove('active');
+                    //         h.nextElementSibling.classList.remove('active');
+                    //     }
+                    // });
+                    
+                    // Abrir o cerrar el actual
+                    header.classList.toggle('active');
+                    content.classList.toggle('active');
+                };
+
+                header.addEventListener('click', toggleAccordion);
+            });
+        });
+    </script>
+
+</body>
+</html>
